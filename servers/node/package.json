@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "uwebsockets": "https://github.com/uNetworking/uWebSockets.js/archive/v19.3.0.tar.gz"
+  }
+}
