@@ -77,8 +77,8 @@ ab -k -n 7500 -c 50 'https://127.0.0.1:44300/sample.jpg'
 | Rust actix-web SSL*   |   425 `#/s` @   3 `MB/s` |  334 `#/s` @  167 `MB/s` |
 | ASP.NET Core 5.0      |  8866 `#/s` @  72 `MB/s` | 3846 `#/s` @ 1923 `MB/s` |
 | ASP.NET Core 5.0*     | 10182 `#/s` @  82 `MB/s` | 2596 `#/s` @ 1298 `MB/s` |
-| ASP.NET Core 5.0 SSL  |       `#/s` @     `MB/s` |      `#/s` @      `MB/s` |
-| ASP.NET Core 5.0 SSL* |       `#/s` @     `MB/s` |      `#/s` @      `MB/s` |
+| ASP.NET Core 5.0 SSL  |    87 `#/s` @  <1 `MB/s` | 1000 `#/s` @  500 `MB/s` |
+| ASP.NET Core 5.0 SSL* |   100 `#/s` @  <1 `MB/s` |   92 `#/s` @   46 `MB/s` |
 | v-web                 | ~20% of requests failed  | ~40% of requests failed  |
 
 *) Running Apache Benchmark without `-k` (keep alive connections)
