@@ -30,6 +30,6 @@ func Router(ctx *fasthttp.RequestCtx) {
 }
 
 func main() {
-	fmt.Println("Server started on http://127.0.0.1:44300")
+	fmt.Println("Server started on https://127.0.0.1:44300")
 	fasthttp.ListenAndServeTLS(":44300", "../../localhost.crt", "../../localhost.key", Router)
 }
