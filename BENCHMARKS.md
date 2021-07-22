@@ -18,7 +18,7 @@ ab -k -n 25000 -c 50 'http://127.0.0.1:8080/sample.jpg'
 | ASP.NET Core 5.0 | 11082 `#/s` @  90 `MB/s` | 3443 `#/s` @ 1722 `MB/s` |
 | v-web            |  8197 `#/s` @  66 `MB/s` | 1104 `#/s` @  552 `MB/s` |
 
-*) Running Apache Benchmark without `-k` keep alive connections (better file IO performance)
+*) Running Apache Benchmark without `-k` keep alive connections
 
 # Windows 10
 
@@ -40,7 +40,7 @@ ab -k -n 25000 -c 50 'http://127.0.0.1:8080/sample.jpg'
 | ASP.NET Core 5.0 | ? `#/s` @ ? `MB/s` | ? `#/s` @ ? `MB/s` |
 | v-web            | ? `#/s` @ ? `MB/s` | ? `#/s` @ ? `MB/s` |
 
-*) Running Apache Benchmark without `-k` keep alive connections (better file IO performance)
+*) Running Apache Benchmark without `-k` keep alive connections
 
 # MacOS
 
@@ -57,11 +57,14 @@ ab -k -n 7500 -c 50 'http://127.0.0.1:8080/sample.jpg'
 | Node-HTTP         |  3729 `#/s` @  30 `MB/s` | 1239 `#/s` @  619 `MB/s` |
 | Node-UWS          | 12453 `#/s` @ 100 `MB/s` | 2525 `#/s` @ 1262 `MB/s` |
 | Deno*             |  5784 `#/s` @  47 `MB/s` |  768 `#/s` @  384 `MB/s` |
-| Go                | 11343 `#/s` @  92 `MB/s` | 2978 `#/s` @ 1489 `MB/s` |
+| Go-NET/HTTP       | 33249 `#/s` @ 270 `MB/s` | 5265 `#/s` @ 2633 `MB/s` |
+| Go-NET/HTTP*      | 12127 `#/s` @  98 `MB/s` | 3230 `#/s` @ 1615 `MB/s` |
+| Go-FastHTTP       | 32254 `#/s` @ 263 `MB/s` | 5217 `#/s` @ 2609 `MB/s` |
+| Go-FastHTTP*      | 14544 `#/s` @ 118 `MB/s` | 3276 `#/s` @ 1639 `MB/s` |
 | Rust actix-web    | 33447 `#/s` @ 271 `MB/s` | 2929 `#/s` @ 1465 `MB/s` |
 | Rust actix-web*   | 15019 `#/s` @ 121 `MB/s` | 2351 `#/s` @ 1176 `MB/s` |
 | ASP.NET Core 5.0  |  8866 `#/s` @  72 `MB/s` | 3846 `#/s` @ 1923 `MB/s` |
 | ASP.NET Core 5.0* | 10182 `#/s` @  82 `MB/s` | 2596 `#/s` @ 1298 `MB/s` |
 | v-web             | ~20% of requests failed  | ~40% of requests failed  |
 
-*) Running Apache Benchmark without `-k` keep alive connections (worse file IO performance)
+*) Running Apache Benchmark without `-k` keep alive connections
