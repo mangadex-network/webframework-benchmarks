@@ -4,7 +4,8 @@
 
 ```bash
 cd ./servers/node
-node ./serve-http.js
+node ./serve-http.js # Non-SSL
+node ./servessl-http.js # SSL
 ```
 
 ## Node (UWS)
@@ -12,7 +13,8 @@ node ./serve-http.js
 ```bash
 cd ./servers/node
 npm install
-node ./serve-uws.js
+node ./serve-uws.js # Non-SSL
+node ./servessl-uws.js # SSL
 ```
 
 ## Deno
