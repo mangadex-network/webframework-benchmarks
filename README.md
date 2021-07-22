@@ -26,15 +26,17 @@ deno run --allow-net --allow-read --unstable ./serve.ts
 
 ```bash
 cd ./servers/golang
-export GOMAXPROCS=1
-go run ./serve.go
+#export GOMAXPROCS=1
+go run ./serve-nethttp.go # Non-SSL
+go run ./servessl-nethttp.go # SSL
 ```
 
 ## Rust
 
 ```bash
 cd ./servers/rust
-cargo run --release
+cargo run --release --bin=serve # Non-SSL
+cargo run --release --bin=servessl # SSL
 ```
 
 ## .NET Core
