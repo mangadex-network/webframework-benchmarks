@@ -18,14 +18,14 @@ async fn serve_image(_request: HttpRequest) -> Result<NamedFile> {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
 
-    println!("Server started on http://127.0.0.1:8080");
+    println!("Server started on https://127.0.0.1:8080");
 
     HttpServer::new(|| {
         App::new()
             .service(serve_text)
             .route("/sample.jpg", web::get().to(serve_image))
     })
-    .bind(("127.0.0.1", 8080))?
+    .bind("127.0.0.1:8080")?
     .workers(4)
     .run()
     .await
