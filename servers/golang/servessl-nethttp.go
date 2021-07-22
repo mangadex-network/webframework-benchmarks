@@ -6,6 +6,7 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"runtime"
 	"strconv"
 )
 
@@ -33,6 +34,7 @@ func ServeImage(response http.ResponseWriter, request *http.Request) {
 }
 
 func main() {
+	runtime.GOMAXPROCS(4)
 	fmt.Println("Server started on https://127.0.0.1:44300")
 	http.HandleFunc("/sample.txt", ServeText)
 	http.HandleFunc("/sample.jpg", ServeImage)

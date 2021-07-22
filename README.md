@@ -26,7 +26,6 @@ deno run --allow-net --allow-read --unstable ./serve.ts
 
 ```bash
 cd ./servers/golang
-#export GOMAXPROCS=1
 go run ./serve-nethttp.go # Non-SSL
 go run ./servessl-nethttp.go # SSL
 ```

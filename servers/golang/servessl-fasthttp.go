@@ -3,6 +3,7 @@ package main
 import (
 	"bytes"
 	"fmt"
+	"runtime"
 
 	"github.com/valyala/fasthttp"
 )
@@ -30,6 +31,7 @@ func Router(ctx *fasthttp.RequestCtx) {
 }
 
 func main() {
+	runtime.GOMAXPROCS(4)
 	fmt.Println("Server started on https://127.0.0.1:44300")
 	fasthttp.ListenAndServeTLS(":44300", "../../localhost.crt", "../../localhost.key", Router)
 }
