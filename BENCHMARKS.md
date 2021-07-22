@@ -48,14 +48,20 @@ ab -k -n 25000 -c 50 'http://127.0.0.1:8080/sample.jpg'
 
 Limited number of requests due to [port starvation](https://stackoverflow.com/questions/1216267/ab-program-freezes-after-lots-of-requests-why) on macOS
 ```zsh
+# Non-SSL
 ab -k -n 7500 -c 50 'http://127.0.0.1:8080/sample.txt'
 ab -k -n 7500 -c 50 'http://127.0.0.1:8080/sample.jpg'
+# SSL
+ab -k -n 7500 -c 50 'https://127.0.0.1:44300/sample.txt'
+ab -k -n 7500 -c 50 'https://127.0.0.1:44300/sample.jpg'
 ```
 
 |                       | 8 KB (Embedded Text)     | 500 KB (Image File)      |
 |-----------------------|--------------------------|--------------------------|
 | Node-HTTP             |  3729 `#/s` @  30 `MB/s` | 1239 `#/s` @  619 `MB/s` |
+| Node-HTTP-SSL         |   383 `#/s` @   3 `MB/s` |  268 `#/s` @  134 `MB/s` |
 | Node-UWS              | 12453 `#/s` @ 100 `MB/s` | 2525 `#/s` @ 1262 `MB/s` |
+| Node-UWS-SSL          |   505 `#/s` @   4 `MB/s` |  377 `#/s` @  189 `MB/s` |
 | Deno*                 |  5784 `#/s` @  47 `MB/s` |  768 `#/s` @  384 `MB/s` |
 | Go-NET/HTTP           | 33249 `#/s` @ 270 `MB/s` | 5265 `#/s` @ 2633 `MB/s` |
 | Go-NET/HTTP*          | 12127 `#/s` @  98 `MB/s` | 3230 `#/s` @ 1615 `MB/s` |
