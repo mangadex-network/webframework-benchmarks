@@ -52,23 +52,27 @@ ab -k -n 7500 -c 50 'http://127.0.0.1:8080/sample.txt'
 ab -k -n 7500 -c 50 'http://127.0.0.1:8080/sample.jpg'
 ```
 
-|                   | 8 KB (Embedded Text)     | 500 KB (Image File)      |
-|-------------------|--------------------------|--------------------------|
-| Node-HTTP         |  3729 `#/s` @  30 `MB/s` | 1239 `#/s` @  619 `MB/s` |
-| Node-UWS          | 12453 `#/s` @ 100 `MB/s` | 2525 `#/s` @ 1262 `MB/s` |
-| Deno*             |  5784 `#/s` @  47 `MB/s` |  768 `#/s` @  384 `MB/s` |
-| Go-NET/HTTP       | 33249 `#/s` @ 270 `MB/s` | 5265 `#/s` @ 2633 `MB/s` |
-| Go-NET/HTTP*      | 12127 `#/s` @  98 `MB/s` | 3230 `#/s` @ 1615 `MB/s` |
-| Go-NET/HTTP-SSL   | 14799 `#/s` @ 120 `MB/s` | 1763 `#/s` @  881 `MB/s` |
-| Go-NET/HTTP-SSL*  |   354 `#/s` @   3 `MB/s` |  311 `#/s` @  154 `MB/s` |
-| Go-FastHTTP       | 32254 `#/s` @ 263 `MB/s` | 5217 `#/s` @ 2609 `MB/s` |
-| Go-FastHTTP*      | 14544 `#/s` @ 118 `MB/s` | 3276 `#/s` @ 1639 `MB/s` |
-| Go-FastHTTP-SSL   | 15377 `#/s` @ 125 `MB/s` | 1014 `#/s` @  507 `MB/s` |
-| Go-FastHTTP-SSL*  |   357 `#/s` @   3 `MB/s` |  286 `#/s` @  143 `MB/s` |
-| Rust actix-web    | 33447 `#/s` @ 271 `MB/s` | 2929 `#/s` @ 1465 `MB/s` |
-| Rust actix-web*   | 15019 `#/s` @ 121 `MB/s` | 2351 `#/s` @ 1176 `MB/s` |
-| ASP.NET Core 5.0  |  8866 `#/s` @  72 `MB/s` | 3846 `#/s` @ 1923 `MB/s` |
-| ASP.NET Core 5.0* | 10182 `#/s` @  82 `MB/s` | 2596 `#/s` @ 1298 `MB/s` |
-| v-web             | ~20% of requests failed  | ~40% of requests failed  |
+|                       | 8 KB (Embedded Text)     | 500 KB (Image File)      |
+|-----------------------|--------------------------|--------------------------|
+| Node-HTTP             |  3729 `#/s` @  30 `MB/s` | 1239 `#/s` @  619 `MB/s` |
+| Node-UWS              | 12453 `#/s` @ 100 `MB/s` | 2525 `#/s` @ 1262 `MB/s` |
+| Deno*                 |  5784 `#/s` @  47 `MB/s` |  768 `#/s` @  384 `MB/s` |
+| Go-NET/HTTP           | 33249 `#/s` @ 270 `MB/s` | 5265 `#/s` @ 2633 `MB/s` |
+| Go-NET/HTTP*          | 12127 `#/s` @  98 `MB/s` | 3230 `#/s` @ 1615 `MB/s` |
+| Go-NET/HTTP-SSL       | 14799 `#/s` @ 120 `MB/s` | 1763 `#/s` @  881 `MB/s` |
+| Go-NET/HTTP-SSL*      |   354 `#/s` @   3 `MB/s` |  311 `#/s` @  154 `MB/s` |
+| Go-FastHTTP           | 32254 `#/s` @ 263 `MB/s` | 5217 `#/s` @ 2609 `MB/s` |
+| Go-FastHTTP*          | 14544 `#/s` @ 118 `MB/s` | 3276 `#/s` @ 1639 `MB/s` |
+| Go-FastHTTP-SSL       | 15377 `#/s` @ 125 `MB/s` | 1014 `#/s` @  507 `MB/s` |
+| Go-FastHTTP-SSL*      |   357 `#/s` @   3 `MB/s` |  286 `#/s` @  143 `MB/s` |
+| Rust actix-web        | 43406 `#/s` @ 351 `MB/s` | 4252 `#/s` @ 2128 `MB/s` |
+| Rust actix-web*       | 15019 `#/s` @ 121 `MB/s` | 2650 `#/s` @ 1325 `MB/s` |
+| Rust actix-web SSL    | 19955 `#/s` @ 161 `MB/s` | 1487 `#/s` @  744 `MB/s` |
+| Rust actix-web SSL*   |   425 `#/s` @   3 `MB/s` |  334 `#/s` @  167 `MB/s` |
+| ASP.NET Core 5.0      |  8866 `#/s` @  72 `MB/s` | 3846 `#/s` @ 1923 `MB/s` |
+| ASP.NET Core 5.0*     | 10182 `#/s` @  82 `MB/s` | 2596 `#/s` @ 1298 `MB/s` |
+| ASP.NET Core 5.0 SSL  |       `#/s` @     `MB/s` |      `#/s` @      `MB/s` |
+| ASP.NET Core 5.0 SSL* |       `#/s` @     `MB/s` |      `#/s` @      `MB/s` |
+| v-web                 | ~20% of requests failed  | ~40% of requests failed  |
 
 *) Running Apache Benchmark without `-k` (keep alive connections)
