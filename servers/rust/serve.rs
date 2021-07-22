@@ -18,7 +18,7 @@ async fn serve_image(_request: HttpRequest) -> Result<NamedFile> {
 #[actix_web::main]
 async fn main() -> std::io::Result<()> {
 
-    println!("Server started on https://127.0.0.1:8080");
+    println!("Server started on http://127.0.0.1:8080");
 
     HttpServer::new(|| {
         App::new()
