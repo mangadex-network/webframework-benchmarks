@@ -1,22 +1,12 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
+using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System.Net;
 
 namespace WebBench
 {
-    public class App
-    {
-        public static void Main(string[] args)
-        {
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(app => app.UseKestrel(options => options.AddServerHeader = false).UseStartup<Startup>())
-                .Build()
-                .Run();
-        }
-    }
-
     public class Startup
     {
         public void ConfigureServices(IServiceCollection services)
@@ -38,6 +28,38 @@ namespace WebBench
                 });
             });
             */
+        }
+    }
+
+    public class App
+    {
+        /*
+        private static void ConfigureLogging(WebHostBuilderContext context, ILoggingBuilder logging)
+        {
+            // use options from `application.json`, so the file can be removed ...
+        }
+        */
+
+        private static void ConfigureKestrel(WebHostBuilderContext context, KestrelServerOptions options)
+        {
+            options.AddServerHeader = false;
+            options.Listen(IPAddress.Loopback, 8080);
+            options.Listen(IPAddress.Loopback, 44300, listenOptions =>
+            {
+                listenOptions.UseHttps("../../localhost.pfx");
+            });
+        }
+
+        private static void ConfigureHost(IWebHostBuilder app)
+        {
+            //app.ConfigureLogging(ConfigureLogging);
+            app.UseKestrel(ConfigureKestrel);
+            app.UseStartup<Startup>();
+        }
+
+        public static void Main(string[] args)
+        {
+            Host.CreateDefaultBuilder(args).ConfigureWebHostDefaults(ConfigureHost).Build().Run();
         }
     }
 }
