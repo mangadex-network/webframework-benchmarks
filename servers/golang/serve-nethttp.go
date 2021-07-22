@@ -6,21 +6,29 @@ import (
 	"io"
 	"net/http"
 	"os"
+	"strconv"
 )
 
 var text = bytes.Repeat([]byte("X"), 8192)
 
 func ServeText(response http.ResponseWriter, request *http.Request) {
-	//response.WriteHeader(200)
+	// NOTE: Setting the size seems to greatly improve performance (https://github.com/golang/go/issues/41513)!
+	response.Header().Set("Content-Length", "8192")
+	//response.WriteHeader(http.StatusOK)
 	response.Write(text)
 }
 
-// https://github.com/golang/go/issues/41513
 // https://stackoverflow.com/questions/40747152/write-pipe-reading-into-http-response-in-golang
 func ServeImage(response http.ResponseWriter, request *http.Request) {
+	//http.ServeFile(response, request, "../../htdocs/sample.jpg")
 	file, _ := os.Open("../../htdocs/sample.jpg")
 	defer file.Close()
-	//response.WriteHeader(200)
+	info, _ := file.Stat()
+	size := info.Size()
+	// NOTE: Setting the size seems to greatly improve performance (https://github.com/golang/go/issues/41513)!
+	response.Header().Set("Content-Length", strconv.FormatInt(size, 10))
+	//response.Header().Set("Transfer-Encoding", "chunked")
+	//response.WriteHeader(http.StatusOK)
 	io.Copy(response, file)
 }
 
