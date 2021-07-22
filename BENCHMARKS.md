@@ -59,12 +59,12 @@ ab -k -n 7500 -c 50 'http://127.0.0.1:8080/sample.jpg'
 | Deno*             |  5784 `#/s` @  47 `MB/s` |  768 `#/s` @  384 `MB/s` |
 | Go-NET/HTTP       | 33249 `#/s` @ 270 `MB/s` | 5265 `#/s` @ 2633 `MB/s` |
 | Go-NET/HTTP*      | 12127 `#/s` @  98 `MB/s` | 3230 `#/s` @ 1615 `MB/s` |
-| Go-SSL-NET/HTTP   | 14799 `#/s` @ 120 `MB/s` | 1763 `#/s` @  881 `MB/s` |
-| Go-SSL-NET/HTTP*  |   354 `#/s` @   3 `MB/s` |  311 `#/s` @  154 `MB/s` |
+| Go-NET/HTTP-SSL   | 14799 `#/s` @ 120 `MB/s` | 1763 `#/s` @  881 `MB/s` |
+| Go-NET/HTTP-SSL*  |   354 `#/s` @   3 `MB/s` |  311 `#/s` @  154 `MB/s` |
 | Go-FastHTTP       | 32254 `#/s` @ 263 `MB/s` | 5217 `#/s` @ 2609 `MB/s` |
 | Go-FastHTTP*      | 14544 `#/s` @ 118 `MB/s` | 3276 `#/s` @ 1639 `MB/s` |
-| Go-SSL-FastHTTP   | 15377 `#/s` @ 125 `MB/s` | 1014 `#/s` @  507 `MB/s` |
-| Go-SSL-FastHTTP*  |   357 `#/s` @   3 `MB/s` |  286 `#/s` @  143 `MB/s` |
+| Go-FastHTTP-SSL   | 15377 `#/s` @ 125 `MB/s` | 1014 `#/s` @  507 `MB/s` |
+| Go-FastHTTP-SSL*  |   357 `#/s` @   3 `MB/s` |  286 `#/s` @  143 `MB/s` |
 | Rust actix-web    | 33447 `#/s` @ 271 `MB/s` | 2929 `#/s` @ 1465 `MB/s` |
 | Rust actix-web*   | 15019 `#/s` @ 121 `MB/s` | 2351 `#/s` @ 1176 `MB/s` |
 | ASP.NET Core 5.0  |  8866 `#/s` @  72 `MB/s` | 3846 `#/s` @ 1923 `MB/s` |
