@@ -19,9 +19,9 @@ node ./servessl-uws.js # SSL
 
 ## Bun
 ```bash
-cd ./servers/node
-bun ./serve-http.js # Non-SSL
-bun ./servessl-http.js # SSL
+cd ./servers/bun
+bun ./serve.ts # Non-SSL
+bun ./servessl.ts # SSL
 ```
 
 ## Deno
