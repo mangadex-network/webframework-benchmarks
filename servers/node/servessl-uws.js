@@ -1,5 +1,5 @@
 const fs = require('fs');
-const uws = require('uwebsockets/uws');
+const { SSLApp } = require('uwebsockets');
 const cluster = require('cluster');
 
 const workers = 4;
@@ -59,7 +59,7 @@ if(cluster.isMaster) {
         key_file_name: '../../localhost.key',
         cert_file_name: '../../localhost.crt',
     };
-    uws.SSLApp(options)
+    SSLApp(options)
         .get('/sample.txt', serveText)
         .get('/sample.jpg', serveImage)
         .listen(44300, token => console.log('Worker started on https://127.0.0.1:44300'));

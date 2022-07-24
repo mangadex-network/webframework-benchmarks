@@ -1,5 +1,5 @@
 const fs = require('fs');
-const uws = require('uwebsockets/uws');
+const { App } = require('uwebsockets');
 const cluster = require('cluster');
 
 const workers = 4;
@@ -55,7 +55,7 @@ if(cluster.isMaster) {
         cluster.fork();
     });
 } else {
-    uws.App() // uws.SSLApp()
+    App() // SSLApp()
         .get('/sample.txt', serveText)
         .get('/sample.jpg', serveImage)
         .listen(8080, token => console.log('Worker started on http://127.0.0.1:8080'));
